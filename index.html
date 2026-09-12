@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiMIND Lab — Hanyang University ERICA</title>
+<meta name="description" content="AI &amp; Machine INtelligence Development Lab, Department of Artificial Intelligence, Hanyang University ERICA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260913">
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="team.html">Team</a>
+      <div class="nav-item-dropdown" tabindex="0">
+        <a href="publications.html">Publications</a>
+        <div class="dropdown-menu">
+          <a href="publications-journal.html">International Journal</a>
+          <a href="publications-conference.html">International Conference</a>
+          <a href="publications-domestic.html">Domestic Conference</a>
+          <a href="publications-patent.html">Patent</a>
+        </div>
+      </div>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO (the former "About the lab" section is folded in here) -->
+  <section id="about" class="hero hero-photo"
+           style="background-image: url('images/banner.jpg');"
+           role="img" aria-label="College of Computing building, Hanyang University ERICA">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-kicker">Dept. of Artificial Intelligence · Hanyang University ERICA</p>
+        <h1>AI &amp; Machine INtelligence Development Lab</h1>
+        <span class="hero-accent" aria-hidden="true"></span>
+        <p class="hero-lede">We solve real-world problems across diverse applications using artificial intelligence.</p>
+        <p class="hero-about">The AiMIND Lab belongs to the Department of Artificial Intelligence at Hanyang University ERICA, led by Prof. Dongchan Kim. Our primary focus is AI4AD — autonomous driving — and our work spans end-to-end learning, motion planning, state estimation, trajectory prediction, and control for real-world driving systems. We also study human-centered mobility, reliable chemical sensing, and battery management, all anchored in AI that has to work reliably in the physical world.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="research.html">See our research</a>
+          <a class="btn btn-ghost" href="#positions">Open positions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH SUMMARY -->
+  <section id="research" class="section section-dark">
+    <div class="section-inner">
+      <p class="eyebrow eyebrow-light">Research areas</p>
+      <h2 class="section-title section-title-light">Where we focus</h2>
+
+      <div class="research-list">
+        <a class="research-row" href="research.html#ai4ad" style="text-decoration:none;">
+          <img src="images/ai4ad.png" alt="AI for Autonomous Driving illustration" class="research-img">
+          <div class="research-body">
+            <div class="research-tag-row">
+              <div class="research-tag">AI4AD</div>
+              <div class="research-tag research-tag-flagship">* Flagship</div>
+            </div>
+            <h3>AI for Autonomous Driving</h3>
+            <p>End-to-end autonomous driving, motion planning, trajectory prediction, and control research.</p>
+          </div>
+        </a>
+        <a class="research-row" href="research.html#ai4mobility" style="text-decoration:none;">
+          <img src="images/ai4mobility.png" alt="AI for Human-Centered Mobility illustration" class="research-img">
+          <div class="research-body">
+            <div class="research-tag">AI4Mobility</div>
+            <h3>AI for Human-Centered Mobility</h3>
+            <p>Risk-aware voice assistance systems that fuse in-vehicle and surround video, voice, and CAN data to detect hazardous situations and guide drivers.</p>
+          </div>
+        </a>
+        <a class="research-row" href="research.html#ai4sensing" style="text-decoration:none;">
+          <img src="images/ai4sensing.png" alt="AI for Reliable Chemical Sensing illustration" class="research-img">
+          <div class="research-body">
+            <div class="research-tag">AI4Sensing</div>
+            <h3>AI for Reliable Chemical Sensing</h3>
+            <p>Machine learning methods for robust, noise-tolerant chemical and environmental sensing.</p>
+          </div>
+        </a>
+        <a class="research-row" href="research.html#ai4bms" style="text-decoration:none;">
+          <img src="images/ai4bms.png" alt="AI for Battery Management Systems illustration" class="research-img">
+          <div class="research-body">
+            <div class="research-tag">AI4BMS</div>
+            <h3>AI for Battery Management Systems</h3>
+            <p>Simulation-to-real reinforcement learning for battery state-of-health estimation and autonomous optimal charging.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news" class="section section-light">
+    <div class="section-inner">
+      <p class="eyebrow">Latest</p>
+      <h2 class="section-title">News</h2>
+
+      <div class="news-filters" role="group" aria-label="Filter news by category">
+        <button class="news-filter is-active" type="button" data-filter="all">All <span>21</span></button>
+        <button class="news-filter" type="button" data-filter="funding">Funding <span>7</span></button>
+        <button class="news-filter" type="button" data-filter="people">People <span>4</span></button>
+        <button class="news-filter" type="button" data-filter="paper">Paper <span>2</span></button>
+        <button class="news-filter" type="button" data-filter="award">Award <span>3</span></button>
+        <button class="news-filter" type="button" data-filter="talk">Talk <span>3</span></button>
+        <button class="news-filter" type="button" data-filter="lab">Lab <span>2</span></button>
+      </div>
+
+      <div class="timeline" id="news-list">
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Aug 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Awarded an NRF Basic Research Grant (Ministry of Science and ICT / NRF) as Principal Investigator for &ldquo;Knowledge-distillation-based VLA for social planning and Physical AI demonstration in human&ndash;robot coexistence environments&rdquo; (Sep 2026&ndash;Aug 2029).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Aug 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Selected to participate in the Innovative AI Talent Fostering Project (IITP) as Co-Investigator (Aug 2026&ndash;Dec 2031).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="talk">
+          <span class="timeline-date">Jul 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-talk">Talk</span>
+            <p>Prof. Dongchan Kim gave an invited lecture, &ldquo;Introduction to Autonomous Driving AI,&rdquo; at the 5th CO-WEEK ACADEMY.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="paper">
+          <span class="timeline-date">Jun 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-paper">Paper</span>
+            <p>One paper accepted for publication in <em>Advanced Science</em>, featured on the inside front cover.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Jun 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Funded by the Hanyang University Seoul&ndash;ERICA Joint Research Support Program as Co-Investigator for simulation-to-real RL-based battery SOH estimation and autonomous optimal charging (Jul 2026&ndash;Jun 2027).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="talk">
+          <span class="timeline-date">Jun 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-talk">Talk</span>
+            <p>Prof. Dongchan Kim gave an invited talk on autonomous driving trends at the 3rd Automotive and Unmanned Mobility Security Workshop.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="paper">
+          <span class="timeline-date">May 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-paper">Paper</span>
+            <p>Ph.D. students Jiwon Suh, Byunggun Kim, and Nahyun Kweon, with undergraduate researcher Pilho Han, presented four papers at the 2026 KSAE Spring Conference.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Apr 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Selected for the NIPA advanced GPU utilization support program for a large-feedback-model framework generating post-hoc feedback for autonomous driving (Apr&ndash;Jul 2026).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Apr 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Funded by the Hanyang University ERICA Campus Innovation Park project group as Principal Investigator for a vision-language-based evaluation framework for end-to-end autonomous driving models (Apr&ndash;May 2026).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="people">
+          <span class="timeline-date">Mar 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-people">People</span>
+            <p>Undergraduate researchers Hyungchan Suh, Jeongmin Lim, and Minkwan Koo, and Ph.D. students Byunggun Kim and Nahyun Kweon, joined the lab.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="award">
+          <span class="timeline-date">Feb 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-award">Award</span>
+            <p>Byunggun Kim and Nahyun Kweon won the Top Excellence Award at the 1st Hanyang AI-dea Challenge.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="award">
+          <span class="timeline-date">Jan 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-award">Award</span>
+            <p>Byunggun Kim, with Prof. Dongchan Kim, won an Honorable Mention in the solution track of the 2025 AI Life Solution Challenge (KEIT) for driving style recognition research.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="award">
+          <span class="timeline-date">Jan 2026</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-award">Award</span>
+            <p>Byunggun Kim, Nahyun Kweon, and Jiwon Suh, with Prof. Dongchan Kim, won the Excellence Award (2nd Prize) at the Campus Lab Start-up Bridge.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Sep 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Joined BK21 Four, AI Area &mdash; the Industry&ndash;Education/Research-Centric Physical AI education and research unit at ERICA (Sep 2025&ndash;Aug 2027).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="funding">
+          <span class="timeline-date">Sep 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-funding">Funding</span>
+            <p>Funded by MOTIE and KEIT as Co-Investigator for an AI-based active driver assistance system and service for vulnerable road users (Jul 2025&ndash;Dec 2027).</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="people">
+          <span class="timeline-date">Sep 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-people">People</span>
+            <p>Undergraduate researcher Sungbin Lim joined the lab.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="people">
+          <span class="timeline-date">Aug 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-people">People</span>
+            <p>MS/Ph.D. integrated student Jiwon Suh joined the lab.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="talk">
+          <span class="timeline-date">Jul 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-talk">Talk</span>
+            <p>Prof. Dongchan Kim gave an invited talk, &ldquo;Autonomous Vehicles and AI-based Motion Planning,&rdquo; at Hyundai Motor Group.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="people">
+          <span class="timeline-date">Jun 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-people">People</span>
+            <p>Undergraduate researcher Pilho Han joined the lab.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="lab">
+          <span class="timeline-date">Jun 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-lab">Lab</span>
+            <p>Prof. Dongchan Kim was featured in HYU ERICA Magazine&rsquo;s &ldquo;Who Are You&rdquo; section. <a class="news-link" href="http://hy-erica.com/vol110/post23.html" target="_blank" rel="noopener">Read the interview</a></p>
+          </div>
+        </div>
+        <div class="timeline-item" data-cat="lab">
+          <span class="timeline-date">Mar 2025</span>
+          <div class="timeline-body">
+            <span class="news-tag news-tag-lab">Lab</span>
+            <p>The AiMIND Lab was founded at Hanyang University ERICA by Prof. Dongchan Kim.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="news-more" type="button" id="news-more">Show all news</button>
+    </div>
+  </section>
+
+  <!-- POSITIONS -->
+  <section id="positions" class="section section-accent">
+    <div class="section-inner positions-inner">
+      <h2 class="section-title section-title-dark">We're looking for graduate and undergraduate researchers.</h2>
+      <p class="section-body section-body-dark">If you're motivated to work on AI that operates in the real world, reach out with your CV.</p>
+      <a class="btn btn-dark" href="contact.html">Get in touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact-footer" class="footer">
+  <div class="section-inner footer-inner">
+    <div>
+      <p class="brand brand-footer"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></p>
+      <p class="footer-address">Department of Artificial Intelligence<br>Hanyang University ERICA, Ansan, South Korea</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:dongchan0507@hanyang.ac.kr">dongchan0507@hanyang.ac.kr</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 AiMIND Lab, Hanyang University ERICA.</p>
+</footer>
+
+<script>
+// News category filter + "show all". Without this script every item is
+// already in the DOM and visible; the chips and button stay hidden (CSS).
+(function () {
+  var list = document.getElementById('news-list');
+  var more = document.getElementById('news-more');
+  if (!list || !more) return;
+
+  var items = [].slice.call(list.querySelectorAll('.timeline-item'));
+  var chips = [].slice.call(document.querySelectorAll('.news-filter'));
+  var COLLAPSED = 6;
+  var filter = 'all';
+  var expanded = false;
+
+  var empty = document.createElement('p');
+  empty.className = 'news-empty';
+  empty.textContent = 'No news in this category yet.';
+  empty.hidden = true;
+  list.parentNode.insertBefore(empty, more);
+
+  function render() {
+    var matched = 0;
+    items.forEach(function (el) {
+      var hit = filter === 'all' || el.dataset.cat === filter;
+      if (!hit) { el.hidden = true; return; }
+      matched++;
+      el.hidden = !expanded && matched > COLLAPSED;
+    });
+    empty.hidden = matched !== 0;
+    if (matched > COLLAPSED) {
+      more.hidden = false;
+      more.textContent = expanded ? 'Show less' : 'Show all ' + matched + ' items';
+    } else {
+      more.hidden = true;
+    }
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      filter = chip.dataset.filter;
+      expanded = false;
+      render();
+    });
+  });
+
+  more.addEventListener('click', function () {
+    expanded = !expanded;
+    render();
+  });
+
+  document.documentElement.classList.add('js-news');
+  render();
+})();
+</script>
+</body></html>

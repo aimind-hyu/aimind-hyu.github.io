@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — AiMIND Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260913">
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <div class="nav-item-dropdown" tabindex="0">
+        <a href="publications.html" class="active">Publications</a>
+        <div class="dropdown-menu">
+          <a href="publications-journal.html">International Journal</a>
+          <a href="publications-conference.html">International Conference</a>
+          <a href="publications-domestic.html">Domestic Conference</a>
+          <a href="publications-patent.html">Patent</a>
+        </div>
+      </div>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="section-inner" style="padding-bottom:32px;">
+    <h1>Publications</h1>
+    <p>Journal papers, conference papers and patents from AiMIND Lab.</p>
+  </div>
+</div>
+
+<main>
+  <section class="section section-light">
+    <div class="section-inner">
+
+      <div class="pub-channels">
+        <a class="pub-channel" href="publications-journal.html">
+          <span class="pub-channel-count">9</span>
+          <h3>International Journals</h3>
+          <p>Peer-reviewed journal papers, each with its key figure.</p>
+          <span class="pub-channel-go">View all &rarr;</span>
+        </a>
+        <a class="pub-channel" href="publications-conference.html">
+          <span class="pub-channel-count">9</span>
+          <h3>International Conferences</h3>
+          <p>Conference papers with figures, including a Best Paper Award.</p>
+          <span class="pub-channel-go">View all &rarr;</span>
+        </a>
+        <a class="pub-channel" href="publications-domestic.html">
+          <span class="pub-channel-count">6</span>
+          <h3>Domestic Conferences</h3>
+          <p>Papers presented at Korean domestic conferences (KSAE).</p>
+          <span class="pub-channel-go">View all &rarr;</span>
+        </a>
+        <a class="pub-channel" href="publications-patent.html">
+          <span class="pub-channel-count">10</span>
+          <h3>Patents</h3>
+          <p>Domestic and international patents, filed and published.</p>
+          <span class="pub-channel-go">View all &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact-footer" class="footer">
+  <div class="section-inner footer-inner">
+    <div>
+      <p class="brand brand-footer"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></p>
+      <p class="footer-address">Department of Artificial Intelligence<br>Hanyang University ERICA, Ansan, South Korea</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:dongchan0507@hanyang.ac.kr">dongchan0507@hanyang.ac.kr</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 AiMIND Lab, Hanyang University ERICA.</p>
+</footer>
+
+<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Close">×</button>
+  <img id="lightbox-image" src="" alt="Expanded view">
+</div>
+<script>
+  (function () {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    let dragState = null;
+
+    function setOpen(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightboxImage.style.transform = 'translate(0,0)';
+      dragState = null;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      lightboxImage.style.transform = 'translate(0,0)';
+      dragState = null;
+    }
+
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".webp"], a[href$=".gif"], a[href$=".bmp"]');
+      if (!link) return;
+      event.preventDefault();
+      setOpen(link.href);
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeLightbox();
+    });
+
+    lightboxImage.addEventListener('pointerdown', function (event) {
+      if (!lightbox.classList.contains('is-open')) return;
+      dragState = { startX: event.clientX, startY: event.clientY, dx: 0, dy: 0 };
+      lightboxImage.setPointerCapture(event.pointerId);
+    });
+
+    lightboxImage.addEventListener('pointermove', function (event) {
+      if (!dragState) return;
+      const dx = event.clientX - dragState.startX;
+      const dy = event.clientY - dragState.startY;
+      dragState.dx = dx;
+      dragState.dy = dy;
+      lightboxImage.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+
+    lightboxImage.addEventListener('pointerup', function () {
+      dragState = null;
+    });
+    lightboxImage.addEventListener('pointerleave', function () {
+      dragState = null;
+    });
+  })();
+</script>
+</body></html>

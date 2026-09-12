@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AiMIND Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260913">
+</head>
+<body id="top">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <div class="nav-item-dropdown" tabindex="0">
+        <a href="publications.html">Publications</a>
+        <div class="dropdown-menu">
+          <a href="publications-journal.html">International Journal</a>
+          <a href="publications-conference.html">International Conference</a>
+          <a href="publications-domestic.html">Domestic Conference</a>
+          <a href="publications-patent.html">Patent</a>
+        </div>
+      </div>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero hero-photo" style="background-image: url('images/banner.jpg');" role="img" aria-label="Hanyang University ERICA campus banner">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-kicker">Contact</p>
+      <h1>Reach out — we're always happy to hear from prospective students and collaborators.</h1>
+      <span class="hero-accent" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="section section-light">
+    <div class="section-inner">
+
+      <div class="contact-block" style="margin-top:0;">
+        <h3>Email</h3>
+        <p><a href="mailto:dongchan0507@hanyang.ac.kr">dongchan0507@hanyang.ac.kr</a></p>
+      </div>
+
+      <div class="contact-block">
+        <h3>Office address</h3>
+        <p>
+          (15588) 한양대학로 55<br>
+          경기도 안산시 상록구<br>
+          학연산클러스터지원센터 414호
+        </p>
+        <p>
+          Room 414, Hanyang Univ.–Industry Cluster Support Center<br>
+          55, Hanyangdaehak-Ro, Sangnok-Gu, Ansan-Si, Gyeonggi-Do, Republic of Korea (15588)
+        </p>
+      </div>
+
+      <iframe class="map-frame" loading="lazy"
+        src="https://maps-api-ssl.google.com/maps?hl=en-US&ll=37.296371,126.838963&output=embed&q=37.296371,126.838963&z=17"
+        title="AiMIND Lab office location">
+      </iframe>
+
+    </div>
+  </section>
+</main>
+
+<footer id="contact-footer" class="footer">
+  <div class="section-inner footer-inner">
+    <div>
+      <p class="brand brand-footer"><img src="images/logo.png" alt="AiMIND Lab logo" class="brand-logo">AiMIND<span>Lab</span></p>
+      <p class="footer-address">Department of Artificial Intelligence<br>Hanyang University ERICA, Ansan, South Korea</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:dongchan0507@hanyang.ac.kr">dongchan0507@hanyang.ac.kr</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 AiMIND Lab, Hanyang University ERICA.</p>
+</footer>
+
+<div id="image-lightbox" class="image-lightbox" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Close">×</button>
+  <img id="lightbox-image" src="" alt="Expanded view">
+</div>
+<script>
+  (function () {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    let dragState = null;
+
+    function setOpen(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      lightboxImage.style.transform = 'translate(0,0)';
+      dragState = null;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      lightboxImage.style.transform = 'translate(0,0)';
+      dragState = null;
+    }
+
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".webp"], a[href$=".gif"], a[href$=".bmp"]');
+      if (!link) return;
+      event.preventDefault();
+      setOpen(link.href);
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeLightbox();
+    });
+
+    lightboxImage.addEventListener('pointerdown', function (event) {
+      if (!lightbox.classList.contains('is-open')) return;
+      dragState = { startX: event.clientX, startY: event.clientY, dx: 0, dy: 0 };
+      lightboxImage.setPointerCapture(event.pointerId);
+    });
+
+    lightboxImage.addEventListener('pointermove', function (event) {
+      if (!dragState) return;
+      const dx = event.clientX - dragState.startX;
+      const dy = event.clientY - dragState.startY;
+      dragState.dx = dx;
+      dragState.dy = dy;
+      lightboxImage.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+
+    lightboxImage.addEventListener('pointerup', function () {
+      dragState = null;
+    });
+    lightboxImage.addEventListener('pointerleave', function () {
+      dragState = null;
+    });
+  })();
+</script>
+</body></html>

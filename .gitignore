@@ -1,0 +1,30 @@
+# GitHub Pages needs a public repo on the free plan, so everything committed
+# here is on the open internet. The entries below are internal working files
+# and full-size originals behind the resized copies the pages actually serve.
+# Nothing listed here is referenced by any page. They stay on disk locally.
+
+# Slide decks and other working documents
+*.pptx
+
+# Full-size sources for the resized copies under gallery/, pub/ and research/
+images/figure/
+
+# Pre-downscale portraits; team.html serves the 400x400 copies one level up
+images/selected/_originals/
+
+# Gallery originals and phone exports kept loose at the images/ root.
+# The six files re-included below are the ones pages actually load --
+# banner.jpg among them, reached from a CSS url() rather than an <img>.
+images/*.jpg
+images/*.png
+!images/ai4ad.png
+!images/ai4bms.png
+!images/ai4mobility.png
+!images/ai4sensing.png
+!images/banner.jpg
+!images/logo.png
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
