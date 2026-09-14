@@ -22,7 +22,8 @@ images/*.png
 !images/ai4mobility.png
 !images/ai4sensing.png
 !images/banner.jpg
-!images/logo.png
+!images/logo-full.png
+!images/logo-full-dark.png
 
 # OS / editor cruft
 .DS_Store

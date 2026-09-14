@@ -1,20 +1,118 @@
 :root {
-  --paper: #FFFFFF;
-  --paper-line: #E0E0E0;
-  --ink: #202124;
-  --ink-soft: #5F6368;
-  --blue: #1A73E8;
-  --blue-dark: #174EA6;
-  --bg-tint: #F8F9FA;
+  color-scheme: light;
 
-  /* One family for Latin and Hangul both, so a sentence mixing the two never
-     switches typeface mid-line. Roboto carries no Hangul at all, which left
-     Korean text falling back to whatever each OS supplied. */
-  --font-display: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --paper: #FFFFFF;          /* page ground */
+  --surface: #FFFFFF;        /* cards, nav bar, footer, menus */
+  --surface-glass: rgba(255, 255, 255, .92);
+  /* Every illustration, publication figure and portrait on this site is a
+     white-background image, so the boxes holding them stay white in BOTH
+     themes. Flipping them would frame each picture in a glaring white slab. */
+  --figure-bg: #FFFFFF;
+
+  --paper-line: #E0E0E0;
+  --rule-strong: #CFD4DA;
+
+  --ink: #202124;
+  --ink-title: #494D52;
+  --ink-soft: #5F6368;
+  --ink-faint: #9AA0A6;
+
+  --blue: #1A73E8;           /* links and accents drawn as text */
+  --blue-dark: #174EA6;
+  /* Filled buttons are a separate pair: the dark theme needs a light blue for
+     legible accent text, and white type on light blue would not pass. */
+  --accent-fill: #1A73E8;
+  --accent-fill-hover: #174EA6;
+  --on-accent: #FFFFFF;
+
+  --bg-tint: #F8F9FA;
+  --gold: #D9A400;
+
+  /* Scrim over the banner photo, left (strong) to right (clear). */
+  --scrim-1: rgba(255, 255, 255, .78);
+  --scrim-2: rgba(255, 255, 255, .72);
+  --scrim-3: rgba(255, 255, 255, .55);
+  --scrim-4: rgba(255, 255, 255, .16);
+  --scrim-5: rgba(255, 255, 255, .04);
+
+  /* Subpage hero wash. */
+  --wash-a: #EFF5FD;
+  --wash-b: #F8F9FA;
+  --wash-c: #FBFBFC;
+
+  /* News category chips. */
+  --tag-funding-bg: #E8F0FE; --tag-funding-fg: #1747A6;
+  --tag-people-bg:  #E4F5EA; --tag-people-fg:  #0B6B3A;
+  --tag-paper-bg:   #F3E8FD; --tag-paper-fg:   #6A1B9A;
+  --tag-award-bg:   #FDF0E0; --tag-award-fg:   #A8530B;
+  --tag-talk-bg:    #FCE7EF; --tag-talk-fg:    #A01247;
+  --tag-lab-bg:     #EFF1F3; --tag-lab-fg:     #47494D;
+
+  --font-display: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
+/* The dark palette is applied only when the attribute is present. A script in
+   every page's <head> sets it before first paint, from the visitor's saved
+   choice or, failing that, their OS setting -- so there is no light flash and
+   no need to repeat this block inside a prefers-color-scheme query. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #1C1F23;
+  --surface: #24282D;
+  --surface-glass: rgba(36, 40, 45, .92);
+  --figure-bg: #FFFFFF;      /* unchanged on purpose -- see the note above */
+
+  --paper-line: #363B41;
+  --rule-strong: #454B52;
+
+  --ink: #E9EBEE;
+  --ink-title: #C9CDD3;
+  --ink-soft: #A5ABB2;
+  --ink-faint: #7A7F85;
+
+  --blue: #8AB4F8;
+  --blue-dark: #AECBFA;
+  --accent-fill: #8AB4F8;
+  --accent-fill-hover: #AECBFA;
+  --on-accent: #1C1F23;
+
+  --bg-tint: #212429;
+  --gold: #E3B341;
+
+  --scrim-1: rgba(28, 31, 35, .86);
+  --scrim-2: rgba(28, 31, 35, .80);
+  --scrim-3: rgba(28, 31, 35, .62);
+  --scrim-4: rgba(28, 31, 35, .26);
+  --scrim-5: rgba(28, 31, 35, .10);
+
+  --wash-a: #2B313B;
+  --wash-b: #272C32;
+  --wash-c: #23272C;
+
+  --tag-funding-bg: #24365A; --tag-funding-fg: #B3CDFB;
+  --tag-people-bg:  #1C3D2A; --tag-people-fg:  #93DDB0;
+  --tag-paper-bg:   #342447; --tag-paper-fg:   #DCBCF7;
+  --tag-award-bg:   #46341C; --tag-award-fg:   #F3CE96;
+  --tag-talk-bg:    #421F34; --tag-talk-fg:    #F5B2CC;
+  --tag-lab-bg:     #2C3035; --tag-lab-fg:     #C2C6CB;
+}
+
+
 * { box-sizing: border-box; }
+/* Colour only -- transitioning every property would make layout changes and
+   the mobile menu animate as a side effect. */
+body, .nav, .footer, .team-card, .research-row, .pub-channel, .news-filter,
+.gallery-carousel, .dropdown-menu, .btn-ghost, .theme-toggle, .nav-toggle {
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  body, .nav, .footer, .team-card, .research-row, .pub-channel, .news-filter,
+  .gallery-carousel, .dropdown-menu, .btn-ghost, .theme-toggle, .nav-toggle {
+    transition: none;
+  }
+}
 /* Author `display` rules outrank the UA sheet's [hidden] rule, so scripts
    toggling el.hidden need this to actually hide grid/flex elements. */
 [hidden] { display: none !important; }
@@ -57,7 +155,7 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #FFFFFF;
+  background: var(--surface);
   border-bottom: 1px solid var(--paper-line);
 }
 
@@ -100,16 +198,68 @@ a:hover { text-decoration: underline; }
 .nav-links a:hover { color: var(--blue); text-decoration: none; }
 .nav-links a.active { color: var(--blue); font-weight: 500; }
 
+/* Hidden above 860px, where the links sit on the bar themselves. */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.nav-toggle svg { display: block; }
+.nav-toggle .icon-close { display: none; }
+.nav-inner.is-open .nav-toggle .icon-open { display: none; }
+.nav-inner.is-open .nav-toggle .icon-close { display: block; }
+
+/* Shares the hamburger's box so the two sit as a matched pair on the bar.
+   Unlike the hamburger it is shown at every width. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--blue); border-color: var(--blue); }
+.theme-toggle svg { display: block; }
+/* Show the icon for the theme the button switches TO, which is how these
+   controls are read: a moon means "go dark". */
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+/* Ordering on the bar: brand, then the two buttons pushed to the right by the
+   links' auto margin. Below 860px the links drop to their own row (order 3)
+   and the buttons stay up top beside the brand. */
+.nav-inner { justify-content: flex-start; gap: 14px; }
+.nav-links { margin-left: auto; }
+.theme-toggle { order: 1; }
+.nav-toggle { order: 2; }
+.nav-links { order: 3; }
+
 .nav-cta {
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
   padding: 9px 20px;
-  background: var(--blue);
-  color: #fff;
+  background: var(--accent-fill);
+  color: var(--on-accent);
   border-radius: 4px;
 }
-.nav-cta:hover { background: var(--blue-dark); text-decoration: none; }
+.nav-cta:hover { background: var(--accent-fill-hover); text-decoration: none; }
 
 /* ---------- HERO ---------- */
 .hero {
@@ -138,18 +288,18 @@ a:hover { text-decoration: underline; }
   background-size: cover;
   background-position: center 45%;
   background-repeat: no-repeat;
-  filter: blur(0.8px);
+  filter: blur(0.5px);
 }
 .hero-photo::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg,
-              rgba(255, 255, 255, .78) 0%,
-              rgba(255, 255, 255, .72) 52%,
-              rgba(255, 255, 255, .55) 68%,
-              rgba(255, 255, 255, .16) 86%,
-              rgba(255, 255, 255, .04) 100%);
+              var(--scrim-1) 0%,
+              var(--scrim-2) 52%,
+              var(--scrim-3) 68%,
+              var(--scrim-4) 86%,
+              var(--scrim-5) 100%);
 }
 .hero-photo .hero-inner {
   position: relative;
@@ -163,7 +313,7 @@ a:hover { text-decoration: underline; }
   width: 64px;
   height: 4px;
   border-radius: 2px;
-  background: #D9A400;
+  background: var(--gold);
   margin-top: 20px;
 }
 
@@ -188,7 +338,17 @@ a:hover { text-decoration: underline; }
 .hero-text h1 {
   font-size: 30px;
   font-weight: 400;
-  color: rgba(32, 33, 36, 0.9);
+  color: var(--ink);
+}
+
+/* Contact keeps the banner photo but titles itself the way the ten .page-hero
+   subpages do -- the page name large, the sentence beneath it small. Without
+   this it would inherit the 30px meant for the home page's much longer title,
+   and "Contact" would read smaller than "Team" or "Research". */
+.hero-photo .hero-text h1.page-title {
+  font-size: clamp(34px, 4vw, 46px);
+  color: var(--ink-title);
+  letter-spacing: -0.015em;
 }
 
 .hero-lede {
@@ -223,23 +383,31 @@ a:hover { text-decoration: underline; }
 .btn:hover { text-decoration: none; }
 
 .btn-primary {
-  background: var(--blue);
-  color: #fff;
+  background: var(--accent-fill);
+  color: var(--on-accent);
 }
-.btn-primary:hover { background: var(--blue-dark); }
+.btn-primary:hover { background: var(--accent-fill-hover); }
 
 .btn-ghost {
   border: 1px solid var(--paper-line);
   color: var(--ink);
-  background: #fff;
+  background: var(--surface);
 }
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
 
 .btn-dark {
-  background: var(--blue);
-  color: #fff;
+  background: var(--accent-fill);
+  color: var(--on-accent);
 }
-.btn-dark:hover { background: var(--blue-dark); }
+.btn-dark:hover { background: var(--accent-fill-hover); }
+
+/* Two files rather than a CSS filter: the wordmark under the brain is a dark
+   neutral grey that vanishes on the dark ground, while the brain is gold and
+   must not shift. No single filter lifts one without wrecking the other, so
+   the dark copy has only its grey pixels lightened. */
+.brand-logo-dark { display: none; }
+:root[data-theme="dark"] .brand-logo-light { display: none; }
+:root[data-theme="dark"] .brand-logo-dark { display: inline-block; }
 
 .brand-logo {
   height: 42px;
@@ -293,7 +461,7 @@ a:hover { text-decoration: underline; }
   padding: 0 0 24px;
   border: 1px solid var(--paper-line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -301,7 +469,7 @@ a:hover { text-decoration: underline; }
   width: 100%;
   height: 200px;
   object-fit: contain;
-  background: #fff;   /* the illustrations are white; a tint showed as grey bands */
+  background: var(--figure-bg);   /* the illustrations are white; a tint showed as grey bands */
   display: block;
   margin-bottom: 18px;
 }
@@ -310,14 +478,24 @@ a:hover { text-decoration: underline; }
   padding: 0 24px;
 }
 
+/* Every area tag is the same size and weight -- AI4AD is distinguished by the
+   Flagship label beside it and the accent rule above, not by a larger tag. The
+   margin sets the tag a clear line apart from the heading it labels. */
 .research-tag {
-  display: inline-block;
+  /* Block, not inline-block: .research-area-head h2 is an inline-flex box, so
+     an inline tag would set on the same line as the heading it labels. Inside
+     .research-tag-row the flex container blockifies it either way. */
+  display: block;
   font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--blue);
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  /* Vertical rule down the left of every area tag. Because the tag is a block,
+     the border runs exactly the height of its one line of text. */
+  border-left: 3px solid var(--blue);
+  padding-left: 10px;
 }
 
 .research-tag-row {
@@ -325,8 +503,11 @@ a:hover { text-decoration: underline; }
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
+/* The row owns the gap below it; a margin on the tags inside would add to the
+   row's own height and pull the two labels out of vertical alignment. */
+.research-tag-row .research-tag { margin-bottom: 0; }
 
 .research-area-head h2 {
   display: inline-flex;
@@ -351,14 +532,11 @@ a:hover { text-decoration: underline; }
 /* ---------- RESEARCH DETAIL PAGE ---------- */
 .research-area { padding: 52px 0 44px; }
 /* Clear rule between the four areas — --paper-line is too faint at this scale. */
-.research-area + .research-area { border-top: 2px solid #CFD4DA; }
+.research-area + .research-area { border-top: 2px solid var(--rule-strong); }
 .research-area:first-of-type { padding-top: 4px; }
 .research-area:last-of-type { padding-bottom: 8px; }
 
-.research-area-head .research-tag { margin-bottom: 10px; }
-.research-area-head .research-tag-row {
-  margin-bottom: 8px;
-}
+
 .research-area-head h2 {
   font-size: 24px;
   font-weight: 500;
@@ -372,26 +550,37 @@ a:hover { text-decoration: underline; }
   max-width: 62ch;
 }
 
+/* No box around the flagship area. The tinted panel enclosed the one section
+   that already had the most to say, which pushed its heading and figure inward
+   and broke the left edge the other three areas share. The accent rule and the
+   louder tag row below mark it instead, without indenting anything. */
 .research-area-featured {
-  padding: 24px 22px 16px;
-  border: 1px solid rgba(17, 67, 120, 0.12);
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(17, 67, 120, 0.025), rgba(17, 67, 120, 0.01));
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
 }
+
 
 /* A plain label, not a badge: the filled gold pill was the only decorated
    element on a page whose other tags are flat text, so it read as an
    ornament rather than as information. The rule before it does the
    separating that the pill shape used to. */
+/* Outlined rather than barred: it sits beside AI4AD's left rule, and a second
+   vertical bar there would read as a repeat of the same mark. The border is
+   hairline and unfilled -- enough to bound the word, not enough to become a
+   badge. */
 .research-tag-flagship {
   display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  border-left: 1px solid var(--paper-line);
-  padding-left: 9px;
+  color: var(--blue);
+  border: 1px solid rgba(26, 115, 232, 0.45);
+  border-radius: 4px;
+  padding: 3px 8px;
 }
 
 /* Illustration beside the topic list rather than floating above it. */
@@ -409,7 +598,7 @@ a:hover { text-decoration: underline; }
   object-position: top left;
   display: block;
   border-radius: 8px;
-  background: #fff;
+  background: var(--figure-bg);
 }
 
 .research-topics {
@@ -456,7 +645,7 @@ a:hover { text-decoration: underline; }
 /* Supporting figures for an area. Click one to open it full size. */
 .research-figs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
   gap: 20px;
   margin: 30px 0 8px;
 }
@@ -466,7 +655,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--paper-line);
   border-radius: 6px;
   overflow: hidden;
-  background: #fff;
+  background: var(--figure-bg);
   line-height: 0;
 }
 .research-figs a:hover { border-color: var(--blue); text-decoration: none; }
@@ -475,7 +664,7 @@ a:hover { text-decoration: underline; }
   width: 100%;
   height: 160px;
   object-fit: contain;
-  background: #fff;
+  background: var(--figure-bg);
 }
 .research-figs figcaption {
   margin-top: 8px;
@@ -507,7 +696,7 @@ a:hover { text-decoration: underline; }
   max-height: 88vh;
   object-fit: contain;
   border-radius: 12px;
-  background: #fff;
+  background: var(--figure-bg);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.33);
   user-select: none;
   cursor: grab;
@@ -579,7 +768,7 @@ a:hover { text-decoration: underline; }
 .news-filter {
   border: 1px solid var(--paper-line);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink-soft);
   font-family: var(--font-body);
   font-size: 13px;
@@ -595,9 +784,9 @@ a:hover { text-decoration: underline; }
 }
 .news-filter:hover { border-color: var(--blue); color: var(--blue); }
 .news-filter.is-active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
+  color: var(--on-accent);
 }
 .news-filter.is-active span { color: rgba(255, 255, 255, .8); }
 
@@ -609,18 +798,18 @@ a:hover { text-decoration: underline; }
   border-radius: 3px;
   letter-spacing: .01em;
 }
-.news-tag-funding { background: #E8F0FE; color: #1747A6; }
-.news-tag-people  { background: #E4F5EA; color: #0B6B3A; }
-.news-tag-paper   { background: #F3E8FD; color: #6A1B9A; }
-.news-tag-award   { background: #FDF0E0; color: #A8530B; }
-.news-tag-talk    { background: #FCE7EF; color: #A01247; }
-.news-tag-lab     { background: #EFF1F3; color: #47494D; }
+.news-tag-funding { background: var(--tag-funding-bg); color: var(--tag-funding-fg); }
+.news-tag-people  { background: var(--tag-people-bg);  color: var(--tag-people-fg); }
+.news-tag-paper   { background: var(--tag-paper-bg);   color: var(--tag-paper-fg); }
+.news-tag-award   { background: var(--tag-award-bg);   color: var(--tag-award-fg); }
+.news-tag-talk    { background: var(--tag-talk-bg);    color: var(--tag-talk-fg); }
+.news-tag-lab     { background: var(--tag-lab-bg);     color: var(--tag-lab-fg); }
 
 .news-more {
   margin-top: 22px;
   border: 1px solid var(--paper-line);
   border-radius: 4px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 14px;
@@ -653,29 +842,21 @@ a:hover { text-decoration: underline; }
 
 /* ---------- FOOTER ---------- */
 .footer {
-  background: #fff;
+  background: var(--surface);
   color: var(--ink-soft);
   border-top: 1px solid var(--paper-line);
 }
 
+/* Only "Back to top" is left in this row, so the 56px the .section-inner
+   padding puts above it is far more air than one link needs. */
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 32px;
-  padding-bottom: 28px;
-}
-
-.brand-footer { color: var(--ink); font-size: 21px; }
-.brand-footer .brand-logo { height: 34px; }
-.brand-footer span { color: var(--ink-soft); }
-
-.footer-address {
-  margin-top: 12px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-soft);
+  padding-top: 28px;
+  padding-bottom: 16px;
 }
 
 .footer-links {
@@ -690,7 +871,7 @@ a:hover { text-decoration: underline; }
   margin: 0 auto;
   padding: 0 24px 28px;
   font-size: 12px;
-  color: #9AA0A6;
+  color: var(--ink-faint);
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -706,9 +887,61 @@ a:hover { text-decoration: underline; }
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 48px; }
   .hero-text h1 { font-size: 32px; }
-  .nav-links { display: none; }
   .research-list { grid-template-columns: 1fr; }
   .timeline-item { grid-template-columns: 84px 1fr; gap: 14px; }
+
+  /* Below this width the links do not fit on the bar, so they move into a
+     panel behind the toggle. They used to be simply display:none with nothing
+     in their place, which left a phone with no way to reach any page but the
+     one it landed on. */
+  .nav-toggle { display: inline-flex; }
+  .nav-inner { flex-wrap: wrap; }
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 6px 0 10px;
+  }
+  .nav-inner.is-open .nav-links { display: flex; }
+  .nav-links > a,
+  .dropdown-menu a {
+    /* 44px of height is the smallest comfortable touch target; padding rather
+       than a fixed height so a wrapped label still gets its full row. */
+    padding: 12px 2px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--paper-line);
+  }
+
+  /* Hover cannot open anything on a touch screen, so the four Publications
+     children are simply always listed, indented under their parent.
+     Every selector here is prefixed with .nav-links: the desktop dropdown
+     rules are declared further down this file, so at equal specificity they
+     would win over this block no matter that it sits in a media query. */
+  .nav-links .nav-item-dropdown { position: static; }
+  .nav-links .nav-item-dropdown::after { display: none; }
+  .nav-links .nav-item-dropdown > a {
+    display: block;
+    padding: 12px 2px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .nav-links .dropdown-menu {
+    display: block;
+    position: static;
+    margin-top: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .nav-links .dropdown-menu a {
+    padding: 11px 2px 11px 18px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--paper-line);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -716,8 +949,12 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- PAGE HERO (subpages) ---------- */
+/* The wash carries the home hero's pale blue across to the subpages, which
+   otherwise opened on a flat grey band. Deliberately not the banner photo: one
+   building repeated across eleven pages wears thin, and the source is only
+   1039x256, too small for a band this wide. */
 .page-hero {
-  background: var(--bg-tint);
+  background: linear-gradient(120deg, var(--wash-a) 0%, var(--wash-b) 55%, var(--wash-c) 100%);
   border-bottom: 1px solid var(--paper-line);
   padding: 48px 0 8px;
 }
@@ -726,7 +963,7 @@ a:hover { text-decoration: underline; }
      softened off full --ink so the title reads as a heading, not a shout. */
   font-size: clamp(34px, 4vw, 46px);
   font-weight: 400;
-  color: #494D52;
+  color: var(--ink-title);
   letter-spacing: -0.015em;
 }
 .page-hero p {
@@ -755,7 +992,7 @@ a:hover { text-decoration: underline; }
   top: 100%;
   left: -14px;
   margin-top: 14px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--paper-line);
   border-radius: 6px;
   padding: 6px 0;
@@ -786,7 +1023,7 @@ a:hover { text-decoration: underline; }
 /* ---------- TEAM ---------- */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
   gap: 22px;
   margin-top: 28px;
 }
@@ -794,7 +1031,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--paper-line);
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
 }
 /* Portraits are square, circle-cropped PNGs with transparent corners,
    so they render as centred avatars rather than a full-width banner crop. */
@@ -805,7 +1042,7 @@ a:hover { text-decoration: underline; }
   margin: 24px auto 4px;
   border-radius: 50%;
   object-fit: cover;
-  background: #fff;
+  background: var(--figure-bg);
 }
 .team-card-body { padding: 16px 18px 20px; }
 .team-role {
@@ -827,12 +1064,21 @@ a:hover { text-decoration: underline; }
   gap: 8px;
   margin-top: 4px;
 }
+/* Line icons rather than emoji: emoji are drawn by the OS, so the set was six
+   different illustration styles at six different weights, and they ignore the
+   theme. These inherit currentColor and sit at one stroke weight. */
+.team-meta-item .team-icon .ic {
+  width: 14px;
+  height: 14px;
+  margin-top: 4px;
+  opacity: .85;
+}
 .team-meta-item .team-icon {
   width: 16px;
   min-width: 16px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   color: var(--blue);
-  font-size: 13px;
   line-height: 1.8;
 }
 .team-links { margin-top: 10px; }
@@ -893,7 +1139,7 @@ a:hover { text-decoration: underline; }
   display: block;
   border: 1px solid var(--paper-line);
   border-radius: 4px;
-  background: #fff;
+  background: var(--figure-bg);
   overflow: hidden;
   line-height: 0;
 }
@@ -904,7 +1150,7 @@ a:hover { text-decoration: underline; }
   height: auto;
 }
 /* An issue cover is a portrait page, so it gets a little more room and a label. */
-.pub-thumb-cover img { background: #fff; }
+.pub-thumb-cover img { background: var(--figure-bg); }
 
 .pub-cover-note {
   align-self: flex-start;   /* flex items stretch by default; keep the badge tight */
@@ -925,7 +1171,7 @@ a:hover { text-decoration: underline; }
 /* Publications hub: one card per channel, each linking to its own page. */
 .pub-channels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: 18px;
   margin-top: 8px;
 }
@@ -934,7 +1180,7 @@ a:hover { text-decoration: underline; }
   padding: 22px 22px 20px;
   border: 1px solid var(--paper-line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: inherit;
   text-decoration: none;
   transition: border-color .15s, box-shadow .15s;
@@ -974,12 +1220,30 @@ a:hover { text-decoration: underline; }
 /* ---------- SIMPLE LISTS (projects / courses) ---------- */
 .simple-list { list-style: none; padding: 0; margin-top: 20px; }
 .simple-list li {
-  padding: 14px 0;
+  position: relative;
+  padding: 14px 0 14px 16px;
   border-bottom: 1px solid var(--paper-line);
   font-size: 14px;
   line-height: 1.7;
   color: var(--ink);
 }
+/* The same dot the research topics use, rather than an emoji: it is the
+   marker this site already has, and it does not change shape or colour
+   between platforms the way a glyph does. */
+.simple-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: .55;
+}
+/* Finished work is stated, not flagged -- the grey dot separates the two
+   lists without adding a second symbol to read. */
+.simple-list-done li::before { background: var(--ink-soft); opacity: .38; }
 .simple-list li:last-child { border-bottom: none; }
 
 .course-year {
@@ -1001,7 +1265,7 @@ a:hover { text-decoration: underline; }
   margin-top: 16px;
   border: 1px solid var(--paper-line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   overflow: hidden;
 }
 .carousel-viewport {
@@ -1021,7 +1285,7 @@ a:hover { text-decoration: underline; }
   align-items: center;
   justify-content: center;
   height: clamp(280px, 34vw, 460px);
-  background: #fff;
+  background: var(--figure-bg);
 }
 .carousel-slide img {
   max-width: 100%;
@@ -1041,7 +1305,7 @@ a:hover { text-decoration: underline; }
   height: 38px;
   border: 1px solid var(--paper-line);
   border-radius: 50%;
-  background: rgba(255, 255, 255, .92);
+  background: var(--surface-glass);
   color: var(--ink);
   font-size: 22px;
   line-height: 1;
