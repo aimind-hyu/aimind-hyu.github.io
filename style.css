@@ -7,8 +7,11 @@
   --blue-dark: #174EA6;
   --bg-tint: #F8F9FA;
 
-  --font-display: "Roboto", "Segoe UI", sans-serif;
-  --font-body: "Roboto", "Segoe UI", sans-serif;
+  /* One family for Latin and Hangul both, so a sentence mixing the two never
+     switches typeface mid-line. Roboto carries no Hangul at all, which left
+     Korean text falling back to whatever each OS supplied. */
+  --font-display: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
 * { box-sizing: border-box; }
